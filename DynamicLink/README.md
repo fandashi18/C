@@ -1,7 +1,7 @@
 # 创建共享目标
 
 ```
-gcc -shared -fpic -std=c99 -Og -o libmath.so add.c
+gcc -std=c99 -Og -shared -fpic -o libmath.so add.c
 ```
 
 # 引用共享目标中的符号
@@ -29,7 +29,7 @@ gcc -shared -fpic -std=c99 -Og -o libmath.so add.c
 # 创建可执行目标文件
 
 ```
-gcc -std=c99 -rdynamic -o main main.c -ldl
+gcc -std=c99 -Og -rdynamic -o main main.c -ldl
 ```
 
 # 加载并运行可执行目标模块
