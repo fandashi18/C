@@ -37,3 +37,7 @@ gcc -std=c99 -rdynamic -o main main.c -ldl
 ```
 ./main
 ```
+
+# 其他
+
+Java中的JNI原理即是如此。
