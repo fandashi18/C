@@ -4,3 +4,5 @@
 */**/.DS_Store
 */**/out
 */**/.vscode
+*/**/.idea
+*/**/cmake-build-debug
