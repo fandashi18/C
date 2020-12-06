@@ -1,5 +1,5 @@
-#ifndef MATH_DYNAMIC_LINK
-#define MATH_DYNAMIC_LINK
+#ifndef MATH_H_DYNAMIC_LINK
+#define MATH_H_DYNAMIC_LINK
 
 int add(int, int);
 
