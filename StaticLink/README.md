@@ -33,6 +33,10 @@ int main(int argc, char const *argv[])
 ```
 gcc -std=c99 -Og -o main main.c ./lib/libmath.a
 ```
+OR
+```
+gcc -std=c99 -Og -o main main.c -L./lib -lmath
+```
 
 # 加载并运行可执行目标模块
 
