@@ -1,7 +1,7 @@
 # 创建共享目标
 
 ```
-gcc -shared -fpic -o libmath.so add.c
+gcc -shared -fpic -std=c99 -Og -o libmath.so add.c
 ```
 
 # 引用共享目标中的符号
