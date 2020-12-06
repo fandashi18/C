@@ -32,7 +32,7 @@ gcc -shared -fpic -o libmath.so add.c
 gcc -std=c99 -rdynamic -o main main.c -ldl
 ```
 
-# 运行可执行目标模块
+# 加载并运行可执行目标模块
 
 ```
 ./main
