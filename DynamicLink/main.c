@@ -6,6 +6,7 @@ int main(int argc, char const *argv[])
 {
     static void * handle;
     static int (* add)(int,int);
+
     handle = dlopen("./libmath.so",RTLD_LAZY);
     if (!handle)
     {
