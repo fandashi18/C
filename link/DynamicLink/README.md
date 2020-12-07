@@ -4,7 +4,17 @@
 gcc -std=c99 -Og -shared -fpic -o libmath.so add.c
 ```
 
-# 引用共享目标中的符号
+# 程序加载后执行前进行动态链接
+
+```
+gcc -std=c99 -Og -o main main.c ./libmath.so -ldl
+```
+若不引用dlfcn.h中定义的符号，则不必加入参数 `-ldl`.
+ 
+
+# 程序运行时进行动态链接
+
+## 引用共享目标中的符号
 
 ```c
     static void * handle;
@@ -26,13 +36,13 @@ gcc -std=c99 -Og -shared -fpic -o libmath.so add.c
     int result = add(1,2);
 ```
 
-# 创建可执行目标文件
+## 创建可执行目标文件
 
 ```
 gcc -std=c99 -Og -rdynamic -o main main.c -ldl
 ```
 
-# 加载并运行可执行目标模块
+## 加载并运行可执行目标模块
 
 ```
 ./main
