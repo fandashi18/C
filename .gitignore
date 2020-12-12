@@ -1,6 +1,7 @@
 */**/*.out
 */**/*.o
 */**/main
+*/**/main2
 */**/.DS_Store
 */**/out
 */**/.vscode
