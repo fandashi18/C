@@ -8,16 +8,19 @@
 
 int main(int argc, char const *argv[])
 {
-    static pid_t childPid;
+    static pid_t pgid, childPid;
+
+    pgid = getpgrp();
+
+    printf("Process group id is %d\n", pgid);
 
     childPid = fork();
 
     if (childPid == -1)
     {
-        fprintf(stderr,"fork error : %s\n", strerror(errno));
+        fprintf(stderr, "fork error : %s\n", strerror(errno));
         exit(EXIT_FAILURE);
     }
-    
 
     if (childPid == 0)
     {
@@ -26,8 +29,13 @@ int main(int argc, char const *argv[])
         exit(EXIT_SUCCESS);
     }
 
-    kill(childPid,SIGKILL);
-    printf("Process end~\n");
+    int killResult = kill(childPid, SIGKILL);
+    if (killResult == -1)
+    {
+        fprintf(stderr,"kill error : %s\n",strerror(errno));
+    }
     
+    printf("Process end~\n");
+
     return 0;
 }
