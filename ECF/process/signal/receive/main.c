@@ -28,7 +28,12 @@ int main(int argc, char const *argv[])
 
 void sigint_handler(int sig)
 {
-    //3.处理信号
-    printf("\nCatch signal %d\n", sig);
+    static char * s = "\nCatch signal.\n";
+    /**
+     * 3.处理信号
+     * 相比printf，write函数更安全。
+     * 因为只要写入至少1个字节，就可以避免被随时可能发生的信号处理程序造成的中断。 
+     */
+    write(STDOUT_FILENO,s,strlen(s));
     exit(EXIT_SUCCESS);
 }
