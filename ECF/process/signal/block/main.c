@@ -10,6 +10,7 @@ int main(int argc, char const *argv[])
     static sigset_t mask, prev_mask;
     //1.初始化信号表为空
     sigemptyset(&mask);
+
     /**
      * 2.阻塞INT信号
      */
