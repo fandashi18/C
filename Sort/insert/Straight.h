@@ -7,6 +7,6 @@
 
 void straightInsSort(int iArr[], int size);
 
-void straightInsSort(int iArr[], int size,int delta);
+void straightInsSortByDelta(int iArr[], int size,int delta);
 
 #endif //SORT_STRAIGHT_H

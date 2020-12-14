@@ -4,6 +4,7 @@
 
 #include "Bubble.h"
 #include <stddef.h>
+#include <stdbool.h>
 
 void bubbleSort(int iArr[], int length) {
     if (iArr == NULL || length <= 1) {
@@ -12,7 +13,7 @@ void bubbleSort(int iArr[], int length) {
 
     static bool change = true;
     static int copy;
-    for (static int i = 0; i < length - 1 && change; ++i) {
+    for (int i = 0; i < length - 1 && change; ++i) {
         change = false;
 
         for (int j = 0; j < length - 2 - i; ++j) {

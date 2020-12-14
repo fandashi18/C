@@ -9,10 +9,10 @@ void straightInsSort(int iArr[], int size) {
         return;
     }
 
-    straightInsSort(iArr, size, 1);
+    straightInsSortByDelta(iArr, size, 1);
 }
 
-void straightInsSort(int iArr[], int size, int delta) {
+void straightInsSortByDelta(int iArr[], int size, int delta) {
     if (iArr == NULL || size <= 1 || delta < 1) {
         return;
     }
