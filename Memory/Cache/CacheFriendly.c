@@ -14,11 +14,11 @@
 
 int main(int argc, char const *argv[])
 {
-    struct timeval start,end;
-    int friendTime, notFriendTime;
-    long sum;
+    static struct timeval start,end;
+    static int friendTime, notFriendTime;
+    static long sum;
 
-    long iArr[1000][1000];
+    static long iArr[1000][1000];
     /**
      * init array 
      */
