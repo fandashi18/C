@@ -59,5 +59,5 @@ void run()
     sum = acc0 + acc1 + acc2 + acc3 + acc4 + acc5 + acc6 + acc7 + acc8 + acc9;
     clock_gettime(CLOCK_REALTIME, &end);
     time = end.tv_nsec - start.tv_nsec;
-    fprintf(stdout, "sum = %ld,time is %ldms\n", sum, time);
+    fprintf(stdout, "sum = %ld,time is %ld ns\n", sum, time);
 }

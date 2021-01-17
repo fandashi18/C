@@ -23,7 +23,7 @@ int main(int argc, char const *argv[])
     clock_gettime(CLOCK_REALTIME, &end);
 
     time = end.tv_nsec - start.tv_nsec;
-    fprintf(stdout, "sum = %ld,time is %ld ms\n", sum, time);
+    fprintf(stdout, "sum = %ld,time is %ld ns\n", sum, time);
 
     return 0;
 }
