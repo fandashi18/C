@@ -1,9 +1,10 @@
 /**
  * Optimizing compare expression.
- * -O0 time0 / time1 = 1
- * -O1 time0 / time1 = 2
- * -O2 time0 / time1 = 72  amazing
- * -O3 time0 / time1 = 50
+ * 
+ * -O0 time0 / time1 = 0.74
+ * -O1 time0 / time1 = 0.70
+ * -O2 time0 / time1 = 1.01
+ * -O3 time0 / time1 = 0.70
  */
 #include <stdio.h>
 #include <time.h>
@@ -37,8 +38,8 @@ int main(int argc, char const *argv[])
     clock_gettime(CLOCK_REALTIME, &start);
     for (int i = 0; i < SIZE; i++)
     {
-        long min = data0[i] <= data0[i] ? data0[i] : data1[i];
-        long max = data0[i] <= data0[i] ? data1[i] : data0[i];
+        long min = data0[i] <= data1[i] ? data0[i] : data1[i];
+        long max = data0[i] <= data1[i] ? data1[i] : data0[i];
         data0[i] = min;
         data1[i] = max;
     }
