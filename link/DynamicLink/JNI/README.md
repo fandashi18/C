@@ -35,7 +35,7 @@
    javah com.fmy.App
    
    # JDK 10
-   javac -h com.fmy.App
+   javac -h ./ com/fmy/App.java
    ```
 
    头文件`com_fmy_App.h`内容：
@@ -85,7 +85,7 @@
 6. 运行Java程序检查执行结果
 
    ```shell
-java com.fmy.App
+   java com.fmy.App
    ```
    
    ```shell
