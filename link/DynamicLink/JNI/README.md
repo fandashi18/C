@@ -86,8 +86,9 @@
 
    ```shell
 java com.fmy.App
+   ```
    
-   # 输出
+   ```shell
    1 + 1 = 2
    ```
    
