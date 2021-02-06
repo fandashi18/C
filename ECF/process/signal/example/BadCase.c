@@ -41,12 +41,11 @@ int main()
 void childHandler(int sig)
 {
     const int oldErrno = errno;
-    if (-1 == write(1, "catch\n", 6))
+    write(1, "catch\n", 6);
+    if (waitpid(-1, NULL, WUNTRACED) < 0)
     {
-        errno = oldErrno;
-        exit(0);
+        write(2, "error\n", 5);
     }
-
     sleep(1);
     errno = oldErrno;
 }
