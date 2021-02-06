@@ -1,14 +1,15 @@
 /**
- * 信号不会排队，如果已经存在了某类型的信号，后续的信号会被丢弃。
- * 
- * gcc -std=gnu17 -O1 BadCase.c -o bad.out
- * 
+ * 信号不会排队，因此受到第一个子进程终止信号时就开始wait所有的子进程，直到所有的子进程都被wait完毕，再终止循环。
+ *
+ * gcc -std=gnu17 -O1 NiceCase.c -o nice.out
+ *
  * 输出：
- * child 15122 print
- * child 15123 print
- * child 15124 print
- * catch
- * catch
+ * child 5601 print
+ * child 5602 print
+ * child 5603 print
+ * wait
+ * wait
+ * wait
  */
 #include <unistd.h>
 #include <stdio.h>
@@ -41,11 +42,17 @@ int main()
 void childHandler(int sig)
 {
     const int oldErrno = errno;
-    write(1, "catch\n", 6);
-    if (waitpid(-1, NULL, WUNTRACED) < 0)
+
+    while (waitpid(-1, NULL, WUNTRACED) > 0)
+    {
+        write(1, "wait\n", 5);
+    }
+
+    if (errno != ECHILD)
     {
         write(2, "error\n", 6);
     }
+
     sleep(1);
     errno = oldErrno;
 }
