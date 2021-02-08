@@ -1,8 +1,12 @@
 /**
  * 信号不会排队
  *
- * gcc -std=gnu17 -O1 NiceCase2.c -o nice2.out
- *
+ * 编译：
+ * gcc -std=gnu11 -O1 -I./ -o nice2.out ECF/process/signal/example/NiceCase2.c  Util/fmy-util.so
+ * 
+ * 执行：
+ * ./nice2.out
+ * 
  * 输出：
  * 2
  * 1
@@ -14,6 +18,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <errno.h>
+#include "Util/fmy-io-ext/fmy-io.h"
+
 void user1Handler(int sig);
 
 static volatile sig_atomic_t counter = 2;
@@ -99,12 +105,18 @@ void user1Handler(int sig)
         exit(EXIT_FAILURE);
     }
 
-    char *counterStr;
-    printf("%d\n", counter);
-    //    if (write(1, counterStr, strlen(counterStr)) == -1) {
-    //        perror(strerror(errno));
-    //        exit(EXIT_FAILURE);
-    //    }
+    char counterStr[12];
+    myitos(counter,counterStr);
+
+    if (write(1, counterStr, strlen(counterStr)) == -1) {
+        perror(strerror(errno));
+        exit(EXIT_FAILURE);
+    }
+
+    if (write(1, "\n", 1) == -1) {
+        perror(strerror(errno));
+        exit(EXIT_FAILURE);
+    }
 
     errno = OLD_ERRNO;
     exit(EXIT_SUCCESS);
