@@ -3,4 +3,6 @@
 
 void myitos(int n, char s[]);
 
+int mystoi(char *s);
+
 #endif
