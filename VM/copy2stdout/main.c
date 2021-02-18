@@ -36,7 +36,7 @@ int main(int argc, char const *argv[])
     void *bufp = mmap(NULL, size, PROT_READ, MAP_PRIVATE, fd, 0);
     if (bufp == MAP_FAILED)
     {
-        fprintf(stdout, "failed mmap\n");
+        fprintf(stderr, "failed mmap\n");
         exit(EXIT_FAILURE);
     }
 
