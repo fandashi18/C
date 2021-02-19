@@ -6,7 +6,7 @@
 
 int main() {
     DIR * dir;
-    if (-1 == (dir = opendir("/home/fmy/CLionProjects/Pratice/"))) {
+    if (NULL == (dir = opendir("/home/fmy/CLionProjects/Pratice/"))) {
         perror(strerror(errno));
         exit(EXIT_FAILURE);
     }
