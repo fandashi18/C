@@ -7,7 +7,7 @@
 #include <pthread.h>
 #include <stdio.h>
 
-void (init_routine)(void);
+void init_routine(void);
 void *start_routine(void *);
 
 int shareAge;
