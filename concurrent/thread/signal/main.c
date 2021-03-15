@@ -12,8 +12,6 @@ void sigusr1Handler (int sig,siginfo_t * si, void * ucontext);
 
 pthread_t tid1,tid2;
 
-char gs[] ={'\0'} ;
-
 int main(int argc, char const *argv[])
 {
     
