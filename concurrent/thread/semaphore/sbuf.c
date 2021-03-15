@@ -4,15 +4,6 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
-
-volatile int cnt = 0;
-
-int main(int argc, char const* argv[])
-{
-    
-    return 0;
-}
-
 typedef struct {
     int* buf;
     unsigned int capacity;
