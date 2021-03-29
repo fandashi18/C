@@ -43,7 +43,7 @@ int main(int argc, char const *argv[])
 }
 
 void sigHandler(int sig) {
-
+    
 }
 
 void *produce(void * arg){

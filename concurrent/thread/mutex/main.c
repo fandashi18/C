@@ -45,7 +45,7 @@ void *produce(void *arg)
 
         count++;
 
-        printf("produce a item : %lu\n", count);
+        printf("produce a item : %u\n", count);
 
         if (count == 1)
         {
@@ -69,7 +69,7 @@ void *consume(void *arg)
             pthread_cond_wait(&condConsume,&mutex);
         }
 
-        printf("consume a item : %lu\n", count);
+        printf("consume a item : %u\n", count);
         count--;
         
         if (count == SIZE - 1)
