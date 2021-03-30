@@ -43,10 +43,8 @@ void *countRoutine(void *arg) {
     {
         enterRegion(localTurn);
         cnt++;
-        localCount = cnt;
         leaveRegion(localTurn);
     }
     
-    printf("process %u : cnt = %d\n", localTurn, localCount);
     return NULL;
 }
