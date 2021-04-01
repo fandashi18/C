@@ -4,8 +4,8 @@
  * 编译指令：
  * gcc -std=c11 -O1 main.c
  * 
- * using time 79658 ns
- */ 
+ * using time 223464855 ns
+ */
 #include <sys/mman.h>
 #include <stddef.h>
 #include <stdio.h>
@@ -24,19 +24,19 @@ int main(int argc, char const *argv[])
     clock_gettime(CLOCK_REALTIME, &start);
 
     int fd;
-    if (-1 == (fd = open("/home/fmy/Projects/C-Research/C/VM/copy2stdout/main.c", O_RDONLY)))
-    {
-      perror(strerror(errno));
-      exit(EXIT_FAILURE);
-    }
-
-    struct stat stat;
-    if (-1 == fstat(fd,&stat))
+    if (-1 == (fd = open("/home/fmy/Downloads/a.txt", O_RDONLY)))
     {
         perror(strerror(errno));
         exit(EXIT_FAILURE);
     }
-    
+
+    struct stat stat;
+    if (-1 == fstat(fd, &stat))
+    {
+        perror(strerror(errno));
+        exit(EXIT_FAILURE);
+    }
+
     int size = stat.st_size;
 
     void *bufp = mmap(NULL, size, PROT_READ, MAP_PRIVATE, fd, 0);
@@ -46,15 +46,15 @@ int main(int argc, char const *argv[])
         exit(EXIT_FAILURE);
     }
 
-    if (-1 == write(1,bufp,size))
+    if (-1 == write(1, bufp, size))
     {
         perror(strerror(errno));
         exit(EXIT_FAILURE);
     }
-    
+
     clock_gettime(CLOCK_REALTIME, &end);
 
-    printf("using time %ld ns\n",end.tv_nsec - start.tv_nsec);
+    printf("using time %ld ns\n", end.tv_nsec - start.tv_nsec);
 
     if (-1 == munmap(bufp, size))
     {
