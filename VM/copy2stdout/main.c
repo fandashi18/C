@@ -3,6 +3,8 @@
  *
  * 编译指令：
  * gcc -std=c11 -O1 main.c
+ * 
+ * using time 79658 ns
  */ 
 #include <sys/mman.h>
 #include <stddef.h>
@@ -14,11 +16,15 @@
 #include <fcntl.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <time.h>
 
 int main(int argc, char const *argv[])
 {
+    struct timespec start, end;
+    clock_gettime(CLOCK_REALTIME, &start);
+
     int fd;
-    if (-1 == (fd = open("/home/fmy/CProjects/MMAP/main.c", O_RDONLY)))
+    if (-1 == (fd = open("/home/fmy/Projects/C-Research/C/VM/copy2stdout/main.c", O_RDONLY)))
     {
       perror(strerror(errno));
       exit(EXIT_FAILURE);
@@ -46,6 +52,9 @@ int main(int argc, char const *argv[])
         exit(EXIT_FAILURE);
     }
     
+    clock_gettime(CLOCK_REALTIME, &end);
+
+    printf("using time %ld ns\n",end.tv_nsec - start.tv_nsec);
 
     if (-1 == munmap(bufp, size))
     {
