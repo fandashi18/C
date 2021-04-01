@@ -1,10 +1,9 @@
 #include <stdio.h>
 #include <pthread.h>
 
-void *countRoutine(void *arg);
+static void *countRoutine(void *arg);
 
-volatile int cnt = 0;
-
+static volatile int cnt = 0;
 int main(int argc, char const *argv[])
 {
     pthread_t tid1, tid2;
@@ -26,3 +25,4 @@ void *countRoutine(void *arg)
     }
     return NULL;
 }
+

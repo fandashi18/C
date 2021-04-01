@@ -56,7 +56,6 @@ void *produce(void * arg){
             pause();
         }
 
-        printf("produce a item : %lu\n",++localCount);
         count++;
 
         if (count == 1)

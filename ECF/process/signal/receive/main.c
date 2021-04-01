@@ -4,7 +4,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <errno.h>
-
 void sigint_handler(int sig);
 
 int main(int argc, char const *argv[])
