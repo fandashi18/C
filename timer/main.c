@@ -34,11 +34,15 @@ int main(int argc, char const *argv[])
         pause();
     }
 
-    printf("main end\n");
     return 0;
 }
 
 void sigHandler(int sig)
 {
     printf("sig %d handled %lu times\n", sig, ++count);
+    if (count == 10)
+    {
+        exit(EXIT_SUCCESS);
+    }
+    
 }
